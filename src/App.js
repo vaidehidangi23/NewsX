@@ -1,25 +1,118 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { Component } from "react";
+import Navbar from "./components/Navbar";
+import News from "./components/News";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+
+export default class extends Component {
+  //pageSize=15;
+  apiKey=process.env.REACT_APP_NEWS_API
+  render() {
+    return (
+      <div>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={
+                <News apiKey={this.apiKey}
+                  key="top"
+                 
+                  country="in"
+                  category="top"
+                />
+              }
+            />
+            <Route
+              exact
+              path="/business"
+              element={
+                <News apiKey={this.apiKey}
+                  key="business"
+                  
+                  country="in"
+                  category="business"
+                />
+              }
+            />
+            <Route
+              exact
+              path="/entertainment"
+              element={
+                <News apiKey={this.apiKey}
+                  key="entertainment"
+                  
+                  country="in"
+                  category="entertainment"
+                />
+              }
+            />
+            <Route
+              exact
+              path="/environment"
+              element={
+                <News apiKey={this.apiKey}
+                  key="environment"
+                  
+                  country="in"
+                  category="environment"
+                />
+              }
+            />
+            <Route
+              exact
+              path="/health"
+              element={
+                <News apiKey={this.apiKey}
+                  key="health"
+                  
+                  country="in"
+                  category="health"
+                />
+              }
+            />
+            <Route
+              exact
+              path="/science"
+              element={
+                <News apiKey={this.apiKey}
+                  key="science"
+                  
+                  country="in"
+                  category="science"
+                />
+              }
+            />
+            <Route
+              exact
+              path="/sports"
+              element={
+                <News apiKey={this.apiKey}
+                  key="sports"
+                  
+                  country="in"
+                  category="sports"
+                />
+              }
+            />
+            <Route
+              exact
+              path="/technology"
+              element={
+                <News apiKey={this.apiKey}
+                  key="technology"
+                  
+                  country="in"
+                  category="technology"
+                />
+              }
+            />
+          </Routes>
+        </Router>
+      </div>
+    );
+  }
 }
-
-export default App;
