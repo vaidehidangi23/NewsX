@@ -12,7 +12,6 @@ export class News extends Component {
 
   static propTypes = {
     country: PropTypes.string,
-    
     category: PropTypes.string,
   };
 
@@ -34,12 +33,14 @@ export class News extends Component {
   }
 
   async updateNews() {
-    const url = `https://newsdata.io/api/1/news?apikey=${this.props.apiKey}&country=${this.props.country}&category=${this.props.category}&page=1&language=en`;
+    // const url = `https://newsdata.io/api/1/news?apikey=${this.props.apiKey}&country=${this.props.country}&category=${this.props.category}&page=1&language=en`;
+    const url = `https://newsdata.io/api/1/news?apikey=pub_79000f9bbdcc25c84f7d585245f534795a59`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
+    console.log(parsedData);
     this.setState({
-      articles: parsedData.articles,
+      articles: parsedData.results,
       totalResults: parsedData.totalResults,
       loading: false,
     });
@@ -90,7 +91,7 @@ export class News extends Component {
         >
           <div className="container">
             <div className="row">
-              {this.state.articles.map((element) => {
+              {this.state.articles.map((element, index) => {
                 return (
                   <div className="col-md-4" key={element.link}>
                     <NewsItem
@@ -102,7 +103,7 @@ export class News extends Component {
                       newsUrl={element.link}
                       author={element.creator}
                       date={element.pubDate}
-                      source={element.source.id}
+                      source={element.source_id}
                     />
                   </div>
                 );
