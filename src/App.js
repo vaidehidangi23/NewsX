@@ -7,7 +7,8 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 export default class extends Component {
   //pageSize=15;
-  apiKey=process.env.REACT_APP_NEWS_API
+  // apiKey = process.env.REACT_APP_NEWS_API
+  apiKey = "pub_78653f5053988f420acaac4fd6550cde7fc3";
   render() {
     return (
       <div>
@@ -20,7 +21,7 @@ export default class extends Component {
               element={
                 <News apiKey={this.apiKey}
                   key="top"
-                 
+
                   country="in"
                   category="top"
                 />
@@ -32,7 +33,7 @@ export default class extends Component {
               element={
                 <News apiKey={this.apiKey}
                   key="business"
-                  
+
                   country="in"
                   category="business"
                 />
@@ -44,7 +45,7 @@ export default class extends Component {
               element={
                 <News apiKey={this.apiKey}
                   key="entertainment"
-                  
+
                   country="in"
                   category="entertainment"
                 />
@@ -56,7 +57,7 @@ export default class extends Component {
               element={
                 <News apiKey={this.apiKey}
                   key="environment"
-                  
+
                   country="in"
                   category="environment"
                 />
@@ -68,7 +69,7 @@ export default class extends Component {
               element={
                 <News apiKey={this.apiKey}
                   key="health"
-                  
+
                   country="in"
                   category="health"
                 />
@@ -80,7 +81,7 @@ export default class extends Component {
               element={
                 <News apiKey={this.apiKey}
                   key="science"
-                  
+
                   country="in"
                   category="science"
                 />
@@ -92,7 +93,7 @@ export default class extends Component {
               element={
                 <News apiKey={this.apiKey}
                   key="sports"
-                  
+
                   country="in"
                   category="sports"
                 />
@@ -104,7 +105,7 @@ export default class extends Component {
               element={
                 <News apiKey={this.apiKey}
                   key="technology"
-                  
+
                   country="in"
                   category="technology"
                 />

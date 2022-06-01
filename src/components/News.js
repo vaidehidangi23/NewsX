@@ -33,8 +33,8 @@ export class News extends Component {
   }
 
   async updateNews() {
-    // const url = `https://newsdata.io/api/1/news?apikey=${this.props.apiKey}&country=${this.props.country}&category=${this.props.category}&page=1&language=en`;
-    const url = `https://newsdata.io/api/1/news?apikey=pub_79000f9bbdcc25c84f7d585245f534795a59`;
+    const url = `https://newsdata.io/api/1/news?apikey=${this.props.apiKey}&country=${this.props.country}&category=${this.props.category}&page=1&language=en`;
+    // const url = `https://newsdata.io/api/1/news?apikey=${this.props.apiKey}`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -47,6 +47,7 @@ export class News extends Component {
   }
 
   async componentDidMount() {
+    console.log("props ", this.props);
     this.updateNews();
   }
 
@@ -69,7 +70,7 @@ export class News extends Component {
     let data = await fetch(url);
     let parsedData = await data.json();
     this.setState({
-      articles: this.state.articles.concat(parsedData.articles),
+      articles: this.state.articles.concat(parsedData.results),
       totalResults: parsedData.totalResults,
     });
   };
@@ -90,11 +91,12 @@ export class News extends Component {
           loader={<Spinner />}
         >
           <div className="container">
-            <div className="row">
+            <div className="row pt-2">
               {this.state.articles.map((element, index) => {
                 return (
                   <div className="col-md-4" key={element.link}>
                     <NewsItem
+                        key={index}
                       title={element.title ? element.title : ""}
                       description={
                         element.description ? element.description : ""
